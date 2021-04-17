@@ -51,38 +51,27 @@ function Footer() {
           overpopulation by means of spay and neuter, education, and community
           outreach. We have been fulfilling our mission since 2021.
         </p>
-        <div class=' line2'>
-          <br></br>
-          <br></br>
+        <div className='container-fluid'>
           <h5>Contact Us</h5>
-          <br></br>
-          <div class='d-flex justify-content-evenly'>
-            <span>
-              <p> Hardik Agarwal</p>
-              <p>
-                <a href='mailto:hardikag17@gmil.com'>hardikag17@gmil.com</a>
-              </p>
-            </span>
-            <span>
-              <p> Suryashankar Das</p>
-              <p>
-                <a href='mailto:hardikag17@gmil.com'>
-                  suryashankardas.2002@gmil.com
-                </a>
-              </p>
-            </span>
-            <span>
-              <p> Aman Nagpal</p>
-              <p>
-                <a href='mailto:amannagpal2468@gmail.com'>
-                  amannagpal2468@gmail.com
-                </a>
-              </p>
-            </span>
+          <div className='row row-12'>
+            <div className='col col-md-4'>
+              <div> Hardik Agarwal</div>
+              <a href='mailto:hardikag17@gmil.com'>hardikag17@gmil.com</a>
+            </div>
+            <div className='col-md-4'>
+              <div> Suryashankar Das</div>
+              <a href='mailto:hardikag17@gmil.com'>
+                suryashankardas.2002@gmil.com
+              </a>
+            </div>
+            <div className='col-md-4'>
+              <div> Aman Nagpal</div>
+              <a href='mailto:amannagpal2468@gmail.com'>
+                amannagpal2468@gmail.com
+              </a>
+            </div>
           </div>
         </div>
-
-        <br></br>
       </footer>
     </div>
   );
