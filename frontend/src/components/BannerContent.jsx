@@ -9,11 +9,11 @@ function MainContent() {
         fontFamily: ' Didact Gothic,sans-serif',
         position: 'absolute',
       }}>
-      <h1 style={{ fontSize: '80px', marginTop: '5%' }}>Paws Adoption</h1>
+      <h1 style={{ fontSize: '95px', marginTop: '5%' }}>Paws Adoption</h1>
 
-      <h4>Everyone can pass by,but not everyone can stop and help.</h4>
+      <h3>Everyone can pass by,but not everyone can stop and help.</h3>
       <h1>Adopt,don't shop.</h1>
-      <p style={{ marginRight: '66%' }}>
+      <p style={{ marginRight: '50%', fontSize: '21px' }}>
         We inspire and enpower communities to make difference in the lives of
         animals.Find your new best friend and give a pet a loving home.
       </p>

@@ -13,11 +13,11 @@ function SignIn() {
 
           <div class='form-floating'>
             <input
-              type='email'
+              type='text'
               class='form-control'
               id='floatingInput'
-              placeholder='name@example.com'></input>
-            <label for='floatingInput'>Email address</label>
+              placeholder='name{numbers}'></input>
+            <label for='floatingInput'>Username</label>
           </div>
           <div class='form-floating'>
             <input
