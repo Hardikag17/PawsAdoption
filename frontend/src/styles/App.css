@@ -17,13 +17,13 @@
     background-image: url(../images/dog1.png);
   }
   25% {
-    background-image: url(../images/dog2.jpg);
+    background-image: url(../images/dog2.png);
   }
   50% {
-    background-image: url(../images/dog3.jpg);
+    background-image: url(../images/dog3.png);
   }
   75% {
-    background-image: url(../images/dog4.jpg);
+    background-image: url(../images/dog4.png);
   }
 }
 
