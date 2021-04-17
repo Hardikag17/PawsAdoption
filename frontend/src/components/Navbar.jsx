@@ -1,13 +1,36 @@
 import '../styles/Nav.css';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../UserContext';
+import { useContext } from 'react';
 
 const Navbar = () => {
+  const { user, setUser } = useContext(UserContext);
+
+  let account = user ? (
+    <div>
+      <button
+        className='btn btn-outline-dark btn-nav'
+        onClick={() => setUser(null)}>
+        Logout
+      </button>
+    </div>
+  ) : (
+    <div className='btn-group'>
+      <Link to='/SignIn' className='btn btn-outline-dark btn-nav'>
+        Sign In
+      </Link>
+      <Link to='/SignUp' className='btn btn-outline-dark btn-nav'>
+        Sign Up
+      </Link>
+    </div>
+  );
+
   return (
     <div className='navbar navbar-expand-lg fixed-top transparent'>
       <div className='container-fluid d-flex justify-content-between'>
         <div>
           <Link to='/Donate'>
-            <a href='/' className='btn btn-outline-dark'>
+            <a href='/' className='btn btn-outline-dark btn-nav'>
               Donate
             </a>
           </Link>
@@ -29,18 +52,7 @@ const Navbar = () => {
             </a>
           </div>
         </div>
-        <div className='btn-group'>
-          <Link to='/SignIn'>
-            <a href='/' className='btn btn-outline-dark'>
-              Sign In
-            </a>
-          </Link>
-          <Link to='/SignUp'>
-            <a href='/' className='btn btn-outline-dark'>
-              Sign Up
-            </a>
-          </Link>
-        </div>
+        {account}
       </div>
     </div>
   );
