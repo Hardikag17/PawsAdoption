@@ -1,3 +1,5 @@
+import '../styles/Banner.css';
+
 function MainContent() {
   return (
     <div
@@ -16,7 +18,7 @@ function MainContent() {
         animals.Find your new best friend and give a pet a loving home.
       </p>
       <button
-        class='btn btn-success btn-lg'
+        class='btn btn-success btn-lg banner-btn'
         style={{ height: '8%', width: '20%' }}>
         Find a home
       </button>
