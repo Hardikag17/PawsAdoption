@@ -1,4 +1,3 @@
-import React from 'react';
 import '../styles/Post.css';
 import imgPhoto from '../images/dog1.png';
 
