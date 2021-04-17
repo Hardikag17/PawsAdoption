@@ -69,14 +69,15 @@ class PostApi(Resource):
 
     def post(self):
         response = request.get_json() if request.is_json else request.form
-        for arg in ['username', 'url', 'content', 'mobile']:
+        for arg in ['username', 'url', 'content', 'mobile', 'city']:
             if not response.get(arg):
-                api.abort(400)
+                api.abort(406)
 
         post = Post(username=response['username'],
                     url=response['url'],
                     content=response['content'],
-                    mobile=response['mobile'])
+                    mobile=response['mobile'],
+                    city=response['city'])
 
         db.session.add(post)
         db.session.commit()
@@ -89,7 +90,7 @@ class CheckUserApi(Resource):
     def post(self, username):
         response = request.get_json() if request.is_json else request.form
         if not response.get('password'):
-            api.abort(400)
+            api.abort(406)
 
         post = Post.query.filter_by(username=username).first()
         if post is None:
@@ -108,10 +109,10 @@ class AddUserApi(Resource):
         response = request.get_json() if request.is_json else request.form
         for arg in ['username', 'password', 'name']:
             if not response.get(arg):
-                api.abort(400)
+                api.abort(406)
 
         if User.query.filter_by(username=response['username']).first() is not None:
-            api.abort(404)
+            api.abort(400)
 
         user = User(username=response['username'],
                     password=generate_password_hash(
@@ -120,7 +121,9 @@ class AddUserApi(Resource):
 
         db.session.add(user)
         db.session.commit()
-        return user.asdict()
+        res = user.asdict()
+        res['password'] = 'hidden'
+        return res
 
 
 if __name__ == '__main__':
