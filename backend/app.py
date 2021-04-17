@@ -22,7 +22,9 @@ api = Api(app)
 class Post(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    username = db.Column(db.String(80), nullable=False)
+    mobile = db.Column(db.Integer, nullable=False)
+    username = db.Column(db.String(40), nullable=False)
+    city = db.Column(db.String(20), nullable=False)
     url = db.Column(db.String(200), nullable=False)
     content = db.Column(db.String(500), nullable=False)
 
@@ -34,12 +36,13 @@ class Post(db.Model):
             'id': self.id,
             'username': self.username,
             'url': self.url,
-            'content': self.content
+            'content': self.content,
+            'mobile': self.mobile
         }
 
 
 class User(db.Model):
-    username = db.Column(db.String, primary_key=True)
+    username = db.Column(db.String(40), primary_key=True)
     name = db.Column(db.String(80), nullable=False)
     password = db.Column(db.String(500), nullable=False)
 
@@ -66,18 +69,14 @@ class PostApi(Resource):
 
     def post(self):
         response = request.get_json() if request.is_json else request.form
-        for arg in ['username', 'url', 'content']:
+        for arg in ['username', 'url', 'content', 'mobile']:
             if not response.get(arg):
                 api.abort(400)
 
-        if Post.query.filter_by(username=response['username'],
-                                url=response['url'],
-                                content=response['content']).first() is not None:
-            api.abort(409)
-
         post = Post(username=response['username'],
                     url=response['url'],
-                    content=response['content'])
+                    content=response['content'],
+                    mobile=response['mobile'])
 
         db.session.add(post)
         db.session.commit()
@@ -90,18 +89,16 @@ class CheckUserApi(Resource):
     def post(self, username):
         response = request.get_json() if request.is_json else request.form
         if not response.get('password'):
-            return {'resp': False}
+            api.abort(400)
 
         post = Post.query.filter_by(username=username).first()
         if post is None:
-            return {'resp': False}
+            api.abort(400)
 
         if check_password_hash(post.asdict()['password'], response.get('password')):
-            res = post.asdict()
-            res['resp'] = True
-            return res
+            return post.asdict()
         else:
-            return {'resp': False}
+            api.abort(403)
 
 
 @api.route('/user')
