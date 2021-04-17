@@ -1,5 +1,10 @@
 function Footer() {
-  return <h1 style={{ display: 'block' }}>This is Footer</h1>;
+  return (
+    <div id="footer">
+        <h1 style={{ display: 'block' }}>This is Footer</h1>;
+    </div>
+  )
+  
 }
 
 export default Footer;
