@@ -92,12 +92,14 @@ class CheckUserApi(Resource):
         if not response.get('password'):
             api.abort(406)
 
-        post = Post.query.filter_by(username=username).first()
-        if post is None:
+        user = User.query.filter_by(username=username).first()
+        if user is None:
             api.abort(400)
 
-        if check_password_hash(post.asdict()['password'], response.get('password')):
-            return post.asdict()
+        if check_password_hash(user.asdict()['password'], response.get('password')):
+            res = user.asdict()
+            res['password'] = 'hidden'
+            return res
         else:
             api.abort(403)
 
