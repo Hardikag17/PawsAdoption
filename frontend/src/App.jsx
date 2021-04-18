@@ -6,6 +6,7 @@ import Donate from './components/Donate';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { UserContext } from './UserContext';
 import { useState } from 'react';
+import Vet from './components/Vet';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -17,6 +18,7 @@ function App() {
           <Route path='/SignUp' component={SignUp} />
           <Route path='/SignIn' component={SignIn} />
           <Route path='/Donate' component={Donate} />
+          <Route path='/Vet' component={Vet} />
         </Switch>
       </Router>
     </UserContext.Provider>

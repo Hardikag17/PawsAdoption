@@ -51,6 +51,17 @@ const Navbar = () => {
               CONTACTS
             </a>
           </div>
+
+          <div>
+            <a href='/' className='nav-link pd-1'>
+              |
+            </a>
+          </div>
+          <div>
+            <Link to='/Vet' className='pd-1 nav-link'>
+              VET
+            </Link>
+          </div>
         </div>
         {account}
       </div>
