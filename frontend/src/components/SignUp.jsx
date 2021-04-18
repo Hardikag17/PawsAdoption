@@ -32,7 +32,7 @@ function SignUp() {
       });
   };
   return (
-    <div>
+    <div className='bg'>
       <main className='form-signin'>
         <center>
           <form onSubmit={submitHandle} method='POST'>
