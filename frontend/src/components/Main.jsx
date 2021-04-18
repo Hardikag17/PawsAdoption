@@ -22,14 +22,23 @@ function Rout() {
       <br></br>
       <br></br>
 
-    <center><div className="line"></div>
-    <br></br>
-    <p style={{fontSize:"25px"}}><i>" Money can buy you a fine dog, buy only love can make him wag his tail "</i></p>
-    <h4 style={{textAlign:'right',marginRight:"30%"}}><i> ~ Kinky Friendman</i></h4>
-    <br></br>
-    <div className="line"></div></center>
-    <br></br>
-    <br></br>
+      <center>
+        <div className='line'></div>
+        <br></br>
+        <p style={{ fontSize: '25px' }}>
+          <i>
+            " Money can buy you a fine dog, buy only love can make him wag his
+            tail "
+          </i>
+        </p>
+        <h4 style={{ textAlign: 'right', marginRight: '30%' }}>
+          <i> ~ Kinky Friendman</i>
+        </h4>
+        <br></br>
+        <div className='line'></div>
+      </center>
+      <br></br>
+      <br></br>
 
       <PostLayout />
       <Footer />
