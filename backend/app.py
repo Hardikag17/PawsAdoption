@@ -35,7 +35,8 @@ class Post(db.Model):
             'username': self.username,
             'url': self.url,
             'content': self.content,
-            'mobile': self.mobile
+            'mobile': self.mobile,
+            'city': self.city
         }
 
 
