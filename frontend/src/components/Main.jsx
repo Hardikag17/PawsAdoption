@@ -3,6 +3,7 @@ import BannerContent from './BannerContent';
 import PostLayout from './PostLayout';
 import Footer from './Footer';
 import '../styles/Main.css';
+import PostBar from './PostBar';
 
 function Rout() {
   return (
@@ -39,7 +40,7 @@ function Rout() {
       </center>
       <br></br>
       <br></br>
-
+      <PostBar />
       <PostLayout />
       <Footer />
     </div>
