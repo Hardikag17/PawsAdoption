@@ -8,9 +8,12 @@ import os
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv(
-    'DATABASE_URL',
-    'sqlite:///db/db.sqlite')
+
+if os.getenv('DATABASE_URL') is None:
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db/db.sqlite'
+else:
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv(
+        'DATABASE_URL').replace("://", "ql://", 1)
 
 CORS(app)
 db = SQLAlchemy(app)
@@ -60,7 +63,7 @@ class User(db.Model):
         }
 
 
-@api.route('/post')
+@ api.route('/post')
 class PostApi(Resource):
 
     def get(self):
@@ -72,7 +75,7 @@ class PostApi(Resource):
 
     def post(self):
         response = request.get_json() if request.is_json else request.form
-        for arg in ['username', 'url', 'content', 'mobile', 'city']:
+        for arg in ['username', 'url', 'content', 'mobile', 'city', 'vac']:
             if not response.get(arg):
                 api.abort(406)
 
@@ -80,14 +83,15 @@ class PostApi(Resource):
                     url=response['url'],
                     content=response['content'],
                     mobile=response['mobile'],
-                    city=response['city'])
+                    city=response['city'],
+                    vac=response['vac'])
 
         db.session.add(post)
         db.session.commit()
         return post.asdict()
 
 
-@api.route('/user/<string:username>')
+@ api.route('/user/<string:username>')
 class CheckUserApi(Resource):
 
     def post(self, username):
@@ -107,7 +111,7 @@ class CheckUserApi(Resource):
             api.abort(403)
 
 
-@api.route('/user')
+@ api.route('/user')
 class AddUserApi(Resource):
 
     def post(self):
@@ -121,9 +125,9 @@ class AddUserApi(Resource):
 
         user = User(username=response['username'],
                     password=generate_password_hash(
-                        response['password'], 'sha256'),
-                    name=response['name'],
-                    email=response['email'])
+            response['password'], 'sha256'),
+            name=response['name'],
+            email=response['email'])
 
         db.session.add(user)
         db.session.commit()
