@@ -1,5 +1,4 @@
 import GooglePayButton from '@google-pay/button-react';
-import react from 'react';
 import qr from '../images/qr.png';
 import '../styles/Donate.css';
 function Donate() {
