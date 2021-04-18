@@ -20,6 +20,7 @@ const PostBar = () => {
         url: image,
         content: info,
         mobile: num,
+        vac: vacc,
       })
       .catch((err) => {
         console.log(err);

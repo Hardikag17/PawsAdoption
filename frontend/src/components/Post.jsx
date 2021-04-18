@@ -1,17 +1,21 @@
 import '../styles/Post.css';
-import imgPhoto from '../images/dog1.png';
 
-const Post = () => {
+const Post = ({ user, url, content, mobile, city }) => {
   return (
     <div className='col-sm-6 col-lg-4 p-4'>
-      <div className='card bg-dark text-white'>
-        <img src={imgPhoto} className='card-img' alt='abc' />
-        <div className='card-img-overlay h-100 d-flex flex-column justify-content-end'>
-          <p className='card-text'>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
-          </p>
-          <b className='card-title'> Title</b>
+      <div className='card bg-light text-black'>
+        <div className='card-body d-flex justify-content-center'>
+          <b>{user}</b>
+        </div>
+        <img src={url} className='card-img w-100' alt='abc' />
+        <div className='card-img-overlay h-100 d-flex flex-column justify-content-end text-white dark-bg'>
+          <div className='card-text fw-bold'>
+            <p>{content}</p>
+            <p className='d-flex justify-content-between'>
+              <div>{city} </div>
+              <div>(+91){mobile}</div>
+            </p>
+          </div>
         </div>
       </div>
     </div>
