@@ -25,6 +25,7 @@ class Post(db.Model):
     city = db.Column(db.String(20), nullable=False)
     url = db.Column(db.String(200), nullable=False)
     content = db.Column(db.String(500), nullable=False)
+    vac = db.Column(db.Boolean, nullable=False)
 
     def __repr__(self):
         return str(id)
@@ -36,7 +37,8 @@ class Post(db.Model):
             'url': self.url,
             'content': self.content,
             'mobile': self.mobile,
-            'city': self.city
+            'city': self.city,
+            'vac': self.vac
         }
 
 
