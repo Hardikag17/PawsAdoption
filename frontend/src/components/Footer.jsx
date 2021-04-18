@@ -6,14 +6,14 @@ import instagram from '../images/instagram .png';
 function Footer() {
   return (
     <div id='footer'>
-      <footer class='footer1'>
+      <footer className='footer1'>
         <div>
           <span>© 2021 Copyright</span>
         </div>
 
-        <div class='d-flex justify-content-center line2'>
+        <div className='d-flex justify-content-center line2'>
           <div>
-            <img class='a' src={logo} alt='Logo' />
+            <img className='a' src={logo} alt='Logo' />
           </div>
 
           <div>
@@ -39,7 +39,7 @@ function Footer() {
         </div>
 
         <br></br>
-        <p class='line2'>
+        <p className='line2'>
           ' Paws Adoption ' is a nonprofit animal shelter based out of Delhi
           NCR. ' Paws Adoption ' is funded solely from adoption fees, donations
           from the public, and our own fundraising efforts.
