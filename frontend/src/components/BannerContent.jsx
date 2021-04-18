@@ -17,11 +17,12 @@ function MainContent() {
         We inspire and enpower communities to make difference in the lives of
         animals.Find your new best friend and give a pet a loving home.
       </p>
-      <button
+      <a
+        href='#posts'
         className='btn btn-success btn-lg banner-btn'
         style={{ height: '8%', width: '20%' }}>
         Find a home
-      </button>
+      </a>
     </div>
   );
 }

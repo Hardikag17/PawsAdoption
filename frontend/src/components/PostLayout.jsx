@@ -4,7 +4,7 @@ import Post from './Post';
 class PostLayout extends Component {
   render() {
     return (
-      <div className='container-fluid'>
+      <div className='container-fluid' id='posts'>
         <div className='row'>
           <Post />
           <Post />
