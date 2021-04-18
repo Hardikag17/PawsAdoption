@@ -2,12 +2,37 @@
 import React from 'react';
 import '../styles/SignIn.css';
 import logo from '../images/logo.png';
+import { useState } from 'react';
+import axios from 'axios';
+import { API_ROOT } from '../api-config';
+import { UserContext } from '../UserContext';
+import { useContext } from 'react';
+import { useHistory } from 'react-router';
 
 function SignIn() {
+  const [username, setUsername] = useState('');
+  const [password, setPass] = useState('');
+  const history = useHistory();
+
+  const { setUser } = useContext(UserContext);
+
+  const submitHandle = (e) => {
+    e.preventDefault();
+    axios
+      .post(`${API_ROOT}/user/${username}`, { password: password })
+      .then((resp) => {
+        setUser(resp.data.username);
+        history.push('/');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <main className='form-signin'>
       <center>
-        <form>
+        <form method='POST' onSubmit={submitHandle}>
           <img
             className='mb-4'
             src={logo}
@@ -21,7 +46,9 @@ function SignIn() {
               type='text'
               className='form-control'
               id='floatingInput'
-              placeholder='name{numbers}'></input>
+              placeholder='name{numbers}'
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}></input>
             <label for='floatingInput'>Username</label>
           </div>
           <div className='form-floating'>
@@ -29,7 +56,9 @@ function SignIn() {
               type='password'
               className='form-control'
               id='floatingPassword'
-              placeholder='Password'></input>
+              placeholder='Password'
+              value={password}
+              onChange={(e) => setPass(e.target.value)}></input>
             <label for='floatingPassword'>Password</label>
           </div>
           <div className='checkbox mb-3'>

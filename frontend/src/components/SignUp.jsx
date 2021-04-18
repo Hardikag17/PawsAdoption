@@ -2,13 +2,40 @@
 import React from 'react';
 import '../styles/SignUp.css';
 import logo from '../images/logo.png';
+import axios from 'axios';
+import { useState } from 'react';
+import { API_ROOT } from '../api-config';
+import { useHistory } from 'react-router';
 
 function SignUp() {
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [username, setUser] = useState('');
+  const [password, setPass] = useState('');
+
+  const history = useHistory();
+
+  const submitHandle = (e) => {
+    e.preventDefault();
+    axios
+      .post(`${API_ROOT}/user`, {
+        email: email,
+        name: name,
+        username: username,
+        password: password,
+      })
+      .then((resp) => {
+        history.push('/SignIn');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div>
-      <main className=' form-signin '>
+      <main className='form-signin'>
         <center>
-          <form>
+          <form onSubmit={submitHandle} method='POST'>
             <img
               className='mb-4'
               src={logo}
@@ -21,7 +48,9 @@ function SignUp() {
                 type='email'
                 className='form-control'
                 id='floatingInput'
-                placeholder='name@example.com'></input>
+                placeholder='name@example.com'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}></input>
               <label for='floatingInput'>Email address</label>
             </div>
             <div className='form-floating'>
@@ -29,7 +58,9 @@ function SignUp() {
                 type='text'
                 className='form-control'
                 id='floatingInput'
-                placeholder='name{numbers}'></input>
+                placeholder='name{numbers}'
+                value={name}
+                onChange={(e) => setName(e.target.value)}></input>
               <label for='floatingInput'>Full name</label>
             </div>
             <div className='form-floating'>
@@ -37,7 +68,9 @@ function SignUp() {
                 type='text'
                 className='form-control'
                 id='floatingInput'
-                placeholder='name{numbers}'></input>
+                placeholder='name{numbers}'
+                value={username}
+                onChange={(e) => setUser(e.target.value)}></input>
               <label for='floatingInput'>Username</label>
             </div>
             <div className='form-floating'>
@@ -45,7 +78,9 @@ function SignUp() {
                 type='password'
                 className='form-control'
                 id='floatingPassword'
-                placeholder='Password'></input>
+                placeholder='Password'
+                value={password}
+                onChange={(e) => setPass(e.target.value)}></input>
               <label for='floatingPassword'>Password</label>
             </div>
             <div className='checkbox mb-3'>
