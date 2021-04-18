@@ -6,8 +6,6 @@ from flask_restplus import Resource, Api
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
 
-from flask_sqlalchemy.model import Model
-
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv(
@@ -45,6 +43,7 @@ class User(db.Model):
     username = db.Column(db.String(40), primary_key=True)
     name = db.Column(db.String(80), nullable=False)
     password = db.Column(db.String(500), nullable=False)
+    email = db.Column(db.String(40), nullable=False)
 
     def __repr__(self):
         return str(self.username)
@@ -54,6 +53,7 @@ class User(db.Model):
             'username': self.username,
             'name': self.name,
             'password': self.password,
+            'email': self.email
         }
 
 
@@ -109,7 +109,7 @@ class AddUserApi(Resource):
 
     def post(self):
         response = request.get_json() if request.is_json else request.form
-        for arg in ['username', 'password', 'name']:
+        for arg in ['username', 'password', 'name', 'email']:
             if not response.get(arg):
                 api.abort(406)
 
@@ -119,7 +119,8 @@ class AddUserApi(Resource):
         user = User(username=response['username'],
                     password=generate_password_hash(
                         response['password'], 'sha256'),
-                    name=response['name'])
+                    name=response['name'],
+                    email=response['email'])
 
         db.session.add(user)
         db.session.commit()
