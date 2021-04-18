@@ -120,9 +120,10 @@ const PostBar = () => {
                   Close
                 </button>
                 <button
-                  type='button'
+                  type='submit'
                   class='btn btn-outline-success'
-                  data-bs-dismiss='modal'>
+                  data-bs-dismiss='modal'
+                  onClick={submitHandle}>
                   Add
                 </button>
               </div>
