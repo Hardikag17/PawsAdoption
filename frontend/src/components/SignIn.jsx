@@ -8,7 +8,12 @@ function SignIn() {
     <main class='form-signin'>
       <center>
         <form>
-          <img class='mb-4' src={logo} styles={{ width: '7', height: '5' }} />
+          <img
+            class='mb-4'
+            src={logo}
+            alt='logo'
+            styles={{ width: '7', height: '5' }}
+          />
           <h1 class='h3 mb-3 fw-normal'>Please sign in</h1>
 
           <div class='form-floating'>
