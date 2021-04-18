@@ -3,7 +3,6 @@ import logo from '../images/logo.png';
 import facebook from '../images/facebook .png';
 import twitter from '../images/twitter.png';
 import instagram from '../images/instagram .png';
-
 function Footer() {
   return (
     <div id='footer'>
