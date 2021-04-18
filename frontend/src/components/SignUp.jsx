@@ -30,7 +30,15 @@ function SignUp() {
                 className='form-control'
                 id='floatingInput'
                 placeholder='name{numbers}'></input>
-              <label for='floatingInput'>Enter a Valid Username</label>
+              <label for='floatingInput'>Full name</label>
+            </div>
+            <div className='form-floating'>
+              <input
+                type='text'
+                className='form-control'
+                id='floatingInput'
+                placeholder='name{numbers}'></input>
+              <label for='floatingInput'>Username</label>
             </div>
             <div className='form-floating'>
               <input
