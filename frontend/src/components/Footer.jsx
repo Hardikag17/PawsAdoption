@@ -8,13 +8,12 @@ function Footer() {
           <section class='mb-4'>
             <h4>About Us</h4>
             <p>
-              ' Paws Adoption ' is a nonprofit animal shelter based out of Delhi
-              NCR. ' Paws Adoption ' is funded solely from adoption fees,
+              'Paws Adoption' is a nonprofit animal shelter based out of Delhi
+              NCR. 'Paws Adoption' is funded solely from adoption fees,
               donations from the public, and our own fundraising efforts.
               <br></br>
               <br></br>
-              Our mission is to serve the people and animals of Delhi NCR and
-              neighbouring cities by providing safe, temporary shelter and care
+              Our mission is to serve the people and animals of India by providing safe, temporary shelter and care
               for abandoned or otherwise homeless cats and dogs, and to reduce
               pet overpopulation by means of spay and neuter, education, and
               community outreach. We have been fulfilling our mission since
